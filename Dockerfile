@@ -1,13 +1,16 @@
 # Lightweight alpine OS, weight only 5mb, everything else is Go environment
-FROM golang:1.16.2-alpine3.13 as builder
+FROM golang:alpine as builder
 
 # Workdir is path in your docker image from where all your commands will be executed
 WORKDIR /go
 
-# Install transocks
-RUN go get -u github.com/cybozu-go/transocks/...
+ENV GO111MODULE=on
 
-FROM alpine:3.12
+# Install transocks
+RUN CGO_ENABLED=0 GOOS=linux go get -u github.com/cybozu-go/transocks/...
+
+FROM alpine:3.12.1
+MAINTAINER Justin Schwartzbeck <justinmschw@gmail.com>
 
 COPY --from=builder /go /go
 
@@ -24,4 +27,4 @@ EXPOSE 12345
 
 USER transocks
 # Starting bundled binary file
-CMD [ "sh", "/app/entrypoint.sh" ]
+CMD [ "/app/entrypoint.sh" ]
