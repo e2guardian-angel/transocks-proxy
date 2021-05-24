@@ -1,12 +1,12 @@
 # transocks-proxy-x86
 Transocks for transparently proxying HTTP(S).
-I made this to be used with jusschwa/squid-ssl-pi as part of the e2guardian-angel project.
+I made this to be used with jusschwa/squid-ssl as part of the e2guardian-angel project.
 
 transocks user is uid 32.
 
 Usage:
 ```
-docker run -e "PROXY_IP=127.0.0.1" -e "PROXY_PORT=3128" --network host jusschwa/transocks-proxy-pi
+docker run -e "PROXY_IP=127.0.0.1" -e "PROXY_PORT=3128" --network host jusschwa/transocks-proxy
 ```
 Use host network if you are wanting to use iptables on the host to redirect to transocks.
 
