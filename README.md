@@ -1,4 +1,4 @@
-# transocks-proxy-x86
+# transocks-proxy
 Transocks for transparently proxying HTTP(S).
 I made this to be used with jusschwa/squid-ssl as part of the e2guardian-angel project.
 
