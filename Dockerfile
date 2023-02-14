@@ -7,9 +7,9 @@ WORKDIR /go
 ENV GO111MODULE=on
 
 # Install transocks
-RUN CGO_ENABLED=0 GOOS=linux go get -u github.com/cybozu-go/transocks/...
+RUN CGO_ENABLED=0 GOOS=linux go install -u github.com/cybozu-go/transocks/...
 
-FROM alpine:3.12.1
+FROM alpine:latest
 MAINTAINER Justin Schwartzbeck <justinmschw@gmail.com>
 
 COPY --from=builder /go /go
